@@ -34,15 +34,17 @@ Provide the response as a JSON object with two fields: "crops" and "buddy". The 
 
 async def get_weather_data(client, location, lookup_date):
     url = f"http://api.weatherapi.com/v1/future.json?key={weather_api_key}&q={location}&dt={lookup_date}"
+    print(url)
     async with client.get(url) as response:
         if response.status == 200:
             return await response.json()
 
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['POST'])
 async def main():
-    location = request.args["location"]
-
-    start_date = datetime.strptime(request.args["date"], "%Y-%m-%d")
+    request_json = await request.get_json()
+    location = request_json["location"]
+    print(location)
+    start_date = datetime.strptime(request_json["date"], "%Y-%m-%d")
     
     total_precipitation = 0
     total_temperature = 0
@@ -93,4 +95,4 @@ async def main():
     # }
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=4000)

@@ -7,8 +7,8 @@ const Crops = ({ results }) => {
             {name: "Onions", description: "onions onions onions onions onions onions onions onions onions "},
             {name: "Watermelons", description: "watermelons watermelons watermelons watermelons watermelons watermelons"}
         ]
-    }
-    const {location, crops} = res
+    }   
+    const {location, crops} = results
 
     return (
         <div className="crop-container">

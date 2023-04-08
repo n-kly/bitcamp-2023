@@ -11,6 +11,7 @@ const Search = ({ setResults }) => {
 
         locData.date = new Date().toISOString().split("T")[0];
         // CHANGE URL
+        console.log(locData)
         axios.post("http://localhost:4000/", locData).then(res => {
             setResults(res.data);
         }).catch(err => {
@@ -29,7 +30,7 @@ const Search = ({ setResults }) => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 pos => {
-                    let location = `${pos.coords.longitude}, ${pos.coords.latitude}`;
+                    let location = `${pos.coords.latitude},${pos.coords.longitude}`;
                     fetchData({location: location, isLongLat: true});
                 }, 
                 error => console.log(error)
