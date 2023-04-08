@@ -49,19 +49,21 @@ const Search = ({ setResults }) => {
                 <Logo />
             </div>
             <div className="row2">
-                <h1>Farm Buddy</h1>
+                <h1>farm buddy</h1>
 
                 <Form>
                     <InputGroup>
-                        <Form.Control type="text" placeholder="Enter your zip code..." value={zipCode} onChange={handleZipCodeChange} />
+                        <Form.Control type="text" placeholder="enter your zip code..." value={zipCode} onChange={handleZipCodeChange} />
+                        <Button className="search-button" variant="success" onClick={handleSubmitWithLocation}><i class="fa fa-search" /></Button>
                     </InputGroup>
+                    
                 </Form>
 
-                <Button variant="success" onClick={handleSubmitWithLocation}>Submit</Button>
+                
 
-                <h5>OR</h5>
+                <h5>~or~</h5>
 
-                <Button variant="success" onClick={handleSubmitFindLocation}>Use Current Location</Button>
+                <Button className="secondary-button" onClick={handleSubmitFindLocation}>use current location</Button>
             </div>
             <div className="row3">
 
