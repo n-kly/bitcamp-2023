@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Logo from "./Logo";
 import axios from "axios";
-import { Typeahead } from 'react-bootstrap-typeahead'; 
+import { Form, InputGroup, Button } from 'react-bootstrap';
 
 const Search = ({ setResults }) => {
 
-    const [locationWords, setLocationWords] = useState([]);
+    const [zipCode, setZipCode] = useState([]);
 
     const fetchData = async (locData) => { 
         locData.unixTime = Date.now();
@@ -21,7 +21,7 @@ const Search = ({ setResults }) => {
 
     const handleSubmitWithLocation = (e) => {
         e.preventDefault();
-        fetchData({location: locationWords, isLongLat: false});
+        fetchData({location: zipCode, isLongLat: false});
     }
 
     const handleSubmitFindLocation = () => {
@@ -29,7 +29,7 @@ const Search = ({ setResults }) => {
             navigator.geolocation.getCurrentPosition(
                 pos => {
                     let location = `${pos.coords.longitude}, ${pos.coords.latitude}`;
-                    fetchData({location: location, isLongLat: true});
+                    fetchData({location: zipCode, isLongLat: true});
                 }, 
                 error => console.log(error)
                 )
@@ -41,18 +41,11 @@ const Search = ({ setResults }) => {
             <Logo />
             <h1>Farm Buddy</h1>
 
-            <Typeahead
-            minLength={2}
-            highlightOnlyResult={true}
-            paginate={true}
-            
-            id="basic-typeahead-single"
-            labelKey="county"
-            onChange={setLocationWords}
-            options={options}
-            placeholder="Please enter your county..."
-            selected={locationWords}
-            />
+            <Form>
+                <InputGroup>
+                    <Form.Control type="text" placeholder="Enter your zip code..." value={zipCode} onChange={handleZipCodeChange} />
+                </InputGroup>
+            </Form>
     
             <button type="button" onClick={handleSubmitWithLocation}>Submit</button>
 
