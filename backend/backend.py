@@ -50,8 +50,7 @@ async def main():
     total_temperature = 0
     total_humidity = 0
     total_sun = 0
-    name = None
-
+    location_name = None
 
     tasks = []
     for i in range(30):
@@ -61,8 +60,8 @@ async def main():
     count = 0
     for data in filter(lambda x: x is not None, await asyncio.gather(*tasks)):
         count += 1
-        if not name:
-            name = data['location']['name'] + ", " + data['location']['region'] + ', ' + data['location']['country']
+        if not location_name:
+            location_name = data['location']['name'] + ", " + data['location']['region'] + ', ' + data['location']['country']
         for j in range (8):
             total_sun += 100 - data["forecast"]['forecastday'][0]['hour'][j]["cloud"]
         total_precipitation += data['forecast']['forecastday'][0]['day']['totalprecip_mm']
@@ -74,17 +73,20 @@ async def main():
     avg_temperature = round(total_temperature / count, 2)
     avg_humidity = round(total_humidity / count, 2)
     
-    print(name)
+    print(location_name)
     print(avg_sun)
     print(avg_precipitation)
     print(avg_temperature)
     print(avg_humidity)
 
-    result = await gpt(name, avg_sun, avg_precipitation, avg_temperature, avg_humidity)
+    result = await gpt(location_name, avg_sun, avg_precipitation, avg_temperature, avg_humidity)
 
     print(result)
 
-    return json.loads(result["choices"][0]["text"])
+    result = json.loads(result["choices"][0]["text"])
+    result["location"] = location_name
+
+    return result
     
     # return {
     #     "name": name,
