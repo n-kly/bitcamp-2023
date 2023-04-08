@@ -37,6 +37,7 @@ code {
   justify-content: space-between;
 }
 
+
 .search-container .row2 {
 
   display: flex;
@@ -46,8 +47,14 @@ code {
 
 .search-container .row2 h1 {
   font-size: 70px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  color: #3b3b3b;
 }
+
+.or {
+  color: #3b3b3b;
+}
+
 
 .search-button {
   background-color: #CCEDCE !important;
