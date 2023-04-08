@@ -16,7 +16,7 @@ const Crops = ({ results }) => {
                 <h1>{location}</h1>
                 <hr style={{borderColor:"#47a24D", borderRadius: "5px"}}/>
                 {crops.map(crop => (
-                    <div className="single-crop">
+                    <div key={crop.name} className="single-crop">
                         <h2>{crop.name}</h2>
                         <p>{crop.description}</p>
                     </div>

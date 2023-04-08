@@ -8,15 +8,16 @@ const Search = ({ setResults }) => {
     const [zipCode, setZipCode] = useState([]);
 
     const fetchData = async (locData) => { 
-        locData.unixTime = Date.now();
+
+        locData.date = new Date().toISOString().split("T")[0];
         // CHANGE URL
-        axios.post("http://localhost:4000/search", locData).then(res => {
+        axios.post("http://localhost:4000/", locData).then(res => {
             setResults(res.data);
         }).catch(err => {
             console.log(err);
         })
-
-        setResults(location)
+        /*console.log(zipCode);
+        setResults(zipCode)*/
     }
 
     const handleSubmitWithLocation = (e) => {
@@ -29,11 +30,15 @@ const Search = ({ setResults }) => {
             navigator.geolocation.getCurrentPosition(
                 pos => {
                     let location = `${pos.coords.longitude}, ${pos.coords.latitude}`;
-                    fetchData({location: zipCode, isLongLat: true});
+                    fetchData({location: location, isLongLat: true});
                 }, 
                 error => console.log(error)
                 )
             }
+    }
+
+    const handleZipCodeChange = (e) => {
+        setZipCode(e.target.value)
     }
 
     return (
