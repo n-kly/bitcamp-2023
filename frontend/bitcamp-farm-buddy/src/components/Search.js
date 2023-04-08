@@ -1,35 +1,25 @@
 import { useState } from "react";
+import Logo from "./Logo";
+/* loading bar ? */
 
-const Search = () => {
+const Search = ({ setLocation }) => {
 
     const [city, setCity] = useState("")
-    const [pos, setPos] = useState({})
-    const [message, setMessage] = useState("No city entered")
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetchData();
-    }
-
-    const fetchData = async () => {
-        const response = await fetch(`http://localhost:4000/?location=${city}`, {
-        })
-        const data = await response.json();
-        console.log(pos)
-        console.log(data)
-        setMessage(data.message)
-        //setMessage(location)
+        setLocation(city);
     }
 
     const findLocation = () => {
         console.log("finding location")
+
         if (navigator.geolocation) {
-            console.log("exists")
             navigator.geolocation.getCurrentPosition( /* PROGRAM DOES NOT WAIT FOR THIS !!!! */
                 position => {
                     console.log("set pos");
-                    setPos({longitude: position.coords.longitude, latitude: position.coords.latitude});
-                    
+                    const location = `${position.coords.longitude}, ${position.coords.latitude}`;
+                    setLocation(location);
                 }, 
                 error => console.log(error)
             )
@@ -38,21 +28,18 @@ const Search = () => {
     }
 
     return (
-        <div class="search-container" >
-            
-            <img style={{width:"120px", height: "100px", padding: "10px"}} alt="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" />
-            <form class="search-bar" action="/search" onSubmit={handleSubmit} >
+        <div className="search-container" >
+            <Logo />
+            <h1>Farm Buddy</h1>
+            <form className="search-bar" action="/search" onSubmit={handleSubmit} >
                 <input 
                     type="text" placeholder="Enter City Name" 
                     onChange={(e) => setCity(e.target.value)} 
                     value={city} />
-                <button type="submit"><i class="fa fa-search" /></button>
+                <button type="submit"><i className="fa fa-search" /></button>
             </form>
             <span>OR</span>
-            <button class="secondary-button" onClick={findLocation}>Use Current Location</button>
-            <p>{message}</p>
-            <p>{pos.latitude}</p>
-            <p>{pos.longitude}</p>
+            <button className="secondary-button" onClick={findLocation}>Use Current Location</button>
         </div>
         
     )
