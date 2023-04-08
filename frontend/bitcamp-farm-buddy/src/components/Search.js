@@ -54,14 +54,16 @@ const Search = ({ setResults }) => {
                 <Form>
                     <InputGroup>
                         <Form.Control type="text" placeholder="enter your zip code..." value={zipCode} onChange={handleZipCodeChange} />
+                        <Button className="search-button" variant="success" onClick={handleSubmitWithLocation}><i class="fa fa-search" /></Button>
                     </InputGroup>
+                    
                 </Form>
 
-                <Button variant="success" onClick={handleSubmitWithLocation}>submit</Button>
+                
 
-                <h5>OR</h5>
+                <h5>~or~</h5>
 
-                <Button variant="success" onClick={handleSubmitFindLocation}>use current location</Button>
+                <Button className="secondary-button" onClick={handleSubmitFindLocation}>use current location</Button>
             </div>
             <div className="row3">
 

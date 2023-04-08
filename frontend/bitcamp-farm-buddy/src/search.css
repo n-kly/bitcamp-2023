@@ -1,6 +1,4 @@
-:root {
-  --primary: #47a24d;
-}
+
 
 body {
   margin: 0px;
@@ -28,6 +26,7 @@ code {
   align-items: center;
   justify-content: space-between;
   height: 100vh;
+  font-family: "Chivo Mono"
 }
 
 .search-container .row1 {
@@ -45,13 +44,25 @@ code {
   align-items: center;
 }
 
-.row2 h5 {
-  margin: 10px;
+.search-container .row2 h1 {
+  font-size: 70px;
+  margin-bottom: 30px;
+}
+
+.search-button {
+  background-color: #CCEDCE !important;
+  border: none !important;
+}
+
+.secondary-button {
+  background-color: #47a24d !important;
+  border: 0px !important;
 }
 
 .search-container .row3 {
   flex: 5;
 }
+
 
 form {
   display: flex;
@@ -62,12 +73,8 @@ form {
 
 input[type="text"] {
   background-color: #CCEDCE;
-  width: 500px !important;
-  border: none;
-  border-radius: 3px;
-  padding: 10px;
-  margin-right: 10px;
-  font-size: 16px;
+  width: 350px !important;
+  border: 1px;
 }
 
 /*button {
