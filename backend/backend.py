@@ -20,11 +20,14 @@ async def before_serving():
 async def after_serving():
     await app.client.close()
 
-async def gpt():
+async def gpt(location, avg_sun, avg_precipitation, avg_temperature, avg_humidity):
     r = openai.Completion.create(
         engine="text-davinci-003",
-        prompt= "What are the best crops to grow in College Park, Maryland given that the average precipitation is 50 mm, the average temperature is 75 degrees F, the soil content is 40% silt, and the climate is humid?",
-        max_tokens=1000
+         prompt =f"""
+What are the best crops to grow in{location}given the following factors: the average precipitation is {avg_precipitation}mm, the average temperature is {avg_temperature}F, the average humidity is {avg_humidity}%, and the average sun coverage is {avg_sun}%.
+Provide the response as a JSON object with two fields: "crops" and "buddy". The "crops" field should be an array of 5 objects representing the top crops to plant. Each object should have a field called "name" with the name of the crop, and a field called "description" with a unique description of why to plant the crop. The "buddy" field should have some fun facts about the crop and the location.
+""",
+        max_tokens=2000
     )
     print(r)
     return r
@@ -64,10 +67,10 @@ async def main():
         total_temperature += data['forecast']['forecastday'][0]['day']['avgtemp_f']
         total_humidity += data['forecast']['forecastday'][0]['day']['avghumidity']
 
-    avg_sun = total_sun / (8 * count)
-    avg_precipitation = total_precipitation / count
-    avg_temperature = total_temperature / count
-    avg_humidity = total_humidity / count
+    avg_sun = round(total_sun / (8 * count), 2)
+    avg_precipitation = round(total_precipitation / count, 2)
+    avg_temperature = round(total_temperature / count, 2)
+    avg_humidity = round(total_humidity / count, 2)
     
     print(name)
     print(avg_sun)
@@ -75,11 +78,11 @@ async def main():
     print(avg_temperature)
     print(avg_humidity)
 
-    result = await gpt()
+    result = await gpt(name, avg_sun, avg_precipitation, avg_temperature, avg_humidity)
 
     print(result)
 
-    return result["choices"][0]["text"]
+    return json.loads(result["choices"][0]["text"])
     
     # return {
     #     "name": name,
