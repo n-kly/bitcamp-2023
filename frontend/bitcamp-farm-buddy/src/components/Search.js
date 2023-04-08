@@ -1,55 +1,64 @@
 import { useState } from "react";
 import Logo from "./Logo";
-/* loading bar ? */
+import axios from "axios";
+import { Typeahead } from 'react-bootstrap-typeahead'; 
 
 const Search = ({ setResults }) => {
 
-    const [location, setLocation] = useState("")
+    const [locationWords, setLocationWords] = useState([]);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        fetchData();
-    }
+    const fetchData = async (locData) => { 
+        locData.unixTime = Date.now();
+        // CHANGE URL
+        axios.post("http://localhost:4000/search", locData).then(res => {
+            setResults(res.data);
+        }).catch(err => {
+            console.log(err);
+        })
 
-    const fetchData = async () => {
-        /*const response = await fetch(`http://localhost:4000/?location=${location}`)
-        const data = await response.json()
-        setResults(data.results)*/
-        console.log(location)
-        console.log("setting results")
         setResults(location)
     }
 
-    const findLocation = () => {
-        console.log("finding location")
+    const handleSubmitWithLocation = (e) => {
+        e.preventDefault();
+        fetchData({location: locationWords, isLongLat: false});
+    }
 
+    const handleSubmitFindLocation = () => {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition( /* PROGRAM DOES NOT WAIT FOR THIS !!!! */
-                position => {
-                    console.log("set pos");
-                    const location = `${position.coords.longitude}, ${position.coords.latitude}`;
-                    setLocation(location);
-                    fetchData();
+            navigator.geolocation.getCurrentPosition(
+                pos => {
+                    let location = `${pos.coords.longitude}, ${pos.coords.latitude}`;
+                    fetchData({location: location, isLongLat: true});
                 }, 
                 error => console.log(error)
-            )
-        }
-        //fetchData();
+                )
+            }
     }
 
     return (
         <div className="search-container" >
             <Logo />
             <h1>Farm Buddy</h1>
-            <form className="search-bar" action="/search" onSubmit={handleSubmit} >
-                <input 
-                    type="text" placeholder="Enter City Name" 
-                    onChange={(e) => setLocation(e.target.value)} 
-                    value={location} /> 
-                <button type="submit"><i className="fa fa-search" /></button>
-            </form>
+
+            <Typeahead
+            minLength={2}
+            highlightOnlyResult={true}
+            paginate={true}
+            
+            id="basic-typeahead-single"
+            labelKey="county"
+            onChange={setLocationWords}
+            options={options}
+            placeholder="Please enter your county..."
+            selected={locationWords}
+            />
+    
+            <button type="button" onClick={handleSubmitWithLocation}>Submit</button>
+
             <span>OR</span>
-            <button className="secondary-button" onClick={findLocation}>Use Current Location</button>
+            
+            <button className="secondary-button" onClick={handleSubmitFindLocation}>Use Current Location</button>
         </div>
         
     )
