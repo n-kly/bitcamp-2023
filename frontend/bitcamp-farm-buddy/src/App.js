@@ -8,8 +8,6 @@ import Results from "./pages/Results";
 function App() {
 
   const [results, setResults] = useState("");
-
-
   return (
     <BrowserRouter>
       <Routes>
