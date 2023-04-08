@@ -6,12 +6,12 @@ import Results from "./pages/Results";
 
 function App() {
 
-  const [location, setLocation] = useState("");
+  const [results, setResults] = useState("");
 
 
   return (
     <div className="App">
-      {location === "" ? <Home setLocation={setLocation}/> : <Results location={location} />}
+      {results === "" ? <Home setResults={setResults}/> : <Results results={results} />}
     </div>
   );
 }

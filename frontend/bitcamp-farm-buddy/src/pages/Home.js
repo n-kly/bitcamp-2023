@@ -1,9 +1,9 @@
 import Search from "../components/Search"
 
-const Home = ({ setLocation }) => {
+const Home = ({ setResults }) => {
     return (
         <div>
-            <Search setLocation={setLocation}/>
+            <Search setResults={setResults}/>
         </div>
     )
 }

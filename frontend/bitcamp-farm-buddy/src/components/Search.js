@@ -2,13 +2,22 @@ import { useState } from "react";
 import Logo from "./Logo";
 /* loading bar ? */
 
-const Search = ({ setLocation }) => {
+const Search = ({ setResults }) => {
 
-    const [city, setCity] = useState("")
+    const [location, setLocation] = useState("")
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setLocation(city);
+        fetchData();
+    }
+
+    const fetchData = async () => {
+        /*const response = await fetch(`http://localhost:4000/?location=${location}`)
+        const data = await response.json()
+        setResults(data.results)*/
+        console.log(location)
+        console.log("setting results")
+        setResults(location)
     }
 
     const findLocation = () => {
@@ -20,6 +29,7 @@ const Search = ({ setLocation }) => {
                     console.log("set pos");
                     const location = `${position.coords.longitude}, ${position.coords.latitude}`;
                     setLocation(location);
+                    fetchData();
                 }, 
                 error => console.log(error)
             )
@@ -34,8 +44,8 @@ const Search = ({ setLocation }) => {
             <form className="search-bar" action="/search" onSubmit={handleSubmit} >
                 <input 
                     type="text" placeholder="Enter City Name" 
-                    onChange={(e) => setCity(e.target.value)} 
-                    value={city} />
+                    onChange={(e) => setLocation(e.target.value)} 
+                    value={location} /> 
                 <button type="submit"><i className="fa fa-search" /></button>
             </form>
             <span>OR</span>

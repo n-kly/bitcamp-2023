@@ -4,22 +4,7 @@ import Mascot from "../components/Mascot";
 import { useEffect, useState } from "react";
 
 
-const Results = ({ location }) => {
-
-    const [results, setResults] = useState("")
-
-    const fetchData = async () => {
-        /*const response = await fetch(`http://localhost:4000/?location=${location}`)
-        const data = await response.json()
-        setResults(data.results)*/
-        console.log(location)
-        setResults(location)
-    }
-
-
-    useEffect(() => {
-        fetchData();
-    }, [])
+const Results = ({ results }) => {
 
     
     return (
