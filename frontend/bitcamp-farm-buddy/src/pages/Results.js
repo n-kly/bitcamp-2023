@@ -1,8 +1,6 @@
 import Crops from "../components/Crops";
 import SpeechBubble from "../components/SpeechBubble";
 import Mascot from "../components/Mascot";
-import { useEffect, useState } from "react";
-
 
 const Results = ({ results }) => {
 
@@ -14,7 +12,7 @@ const Results = ({ results }) => {
             </div>
             <div className="right">
                 <div className="top results">
-                    <SpeechBubble />
+                    <SpeechBubble results={results}/>
                 </div>
                 <div className="bottom results">
                     <Mascot />
