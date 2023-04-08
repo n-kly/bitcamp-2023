@@ -7,7 +7,7 @@ const Search = ({ setResults }) => {
 
     const [zipCode, setZipCode] = useState([]);
 
-    const fetchData = async (locData) => { 
+    const fetchData = async (locData) => {
 
         locData.date = new Date().toISOString().split("T")[0];
         // CHANGE URL
@@ -23,7 +23,7 @@ const Search = ({ setResults }) => {
 
     const handleSubmitWithLocation = (e) => {
         e.preventDefault();
-        fetchData({location: zipCode, isLongLat: false});
+        fetchData({ location: zipCode, isLongLat: false });
     }
 
     const handleSubmitFindLocation = () => {
@@ -31,11 +31,11 @@ const Search = ({ setResults }) => {
             navigator.geolocation.getCurrentPosition(
                 pos => {
                     let location = `${pos.coords.latitude},${pos.coords.longitude}`;
-                    fetchData({location: location, isLongLat: true});
-                }, 
+                    fetchData({ location: location, isLongLat: true });
+                },
                 error => console.log(error)
-                )
-            }
+            )
+        }
     }
 
     const handleZipCodeChange = (e) => {
@@ -44,22 +44,31 @@ const Search = ({ setResults }) => {
 
     return (
         <div className="search-container" >
-            <Logo />
-            <h1>Farm Buddy</h1>
+            <div className="row1">
+                <div></div>
+                <Logo />
+            </div>
+            <div className="row2">
+                <h1>Farm Buddy</h1>
 
-            <Form>
-                <InputGroup>
-                    <Form.Control type="text" placeholder="Enter your zip code..." value={zipCode} onChange={handleZipCodeChange} />
-                </InputGroup>
-            </Form>
-    
-            <button type="button" onClick={handleSubmitWithLocation}>Submit</button>
+                <Form>
+                    <InputGroup>
+                        <Form.Control type="text" placeholder="Enter your zip code..." value={zipCode} onChange={handleZipCodeChange} />
+                    </InputGroup>
+                </Form>
 
-            <span>OR</span>
-            
-            <button className="secondary-button" onClick={handleSubmitFindLocation}>Use Current Location</button>
+                <button type="button" onClick={handleSubmitWithLocation}>Submit</button>
+
+                <span>OR</span>
+
+                <button className="secondary-button" onClick={handleSubmitFindLocation}>Use Current Location</button>
+            </div>
+            <div className="row3">
+
+            </div>
+
         </div>
-        
+
     )
 }
 
