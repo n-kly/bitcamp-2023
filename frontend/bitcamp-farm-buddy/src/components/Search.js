@@ -57,11 +57,11 @@ const Search = ({ setResults }) => {
                     </InputGroup>
                 </Form>
 
-                <button type="button" onClick={handleSubmitWithLocation}>Submit</button>
+                <Button variant="success" onClick={handleSubmitWithLocation}>Submit</Button>
 
-                <span>OR</span>
+                <h5>OR</h5>
 
-                <button className="secondary-button" onClick={handleSubmitFindLocation}>Use Current Location</button>
+                <Button variant="success" onClick={handleSubmitFindLocation}>Use Current Location</Button>
             </div>
             <div className="row3">
 
