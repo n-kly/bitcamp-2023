@@ -2,6 +2,7 @@ import { useState } from "react";
 import Logo from "./Logo";
 import axios from "axios";
 import { Form, InputGroup, Button } from 'react-bootstrap';
+import Hat from "./Hat";
 
 const Search = ({ setResults }) => {
 
@@ -45,11 +46,12 @@ const Search = ({ setResults }) => {
     return (
         <div className="search-container" >
             <Logo />
+            <Hat />
             <h1>Farm Buddy</h1>
 
             <Form>
                 <InputGroup>
-                    <Form.Control type="text" placeholder="Enter your zip code..." value={zipCode} onChange={handleZipCodeChange} />
+                    <Form.Control type="text" placeholder="enter your zip code..." value={zipCode} onChange={handleZipCodeChange} />
                 </InputGroup>
             </Form>
     
