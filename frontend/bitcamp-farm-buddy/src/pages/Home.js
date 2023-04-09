@@ -7,7 +7,7 @@ const Home = () => {
     const [copyResults, setCopyResults] = useState("");
     const [buddyDone, setBuddyDone] = useState(false);
     const [submit, setSubmit] = useState(true);
-    const [renderResults, setRenderResults] = useState(true);
+    const [renderResults, setRenderResults] = useState(false);
 
     useEffect(() => {
         if (!submit) {
