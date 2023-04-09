@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import Fade from '@mui/material/Fade';
 
 const Loading = () => {
     const [showLoading, setShowLoading] = useState(false);
@@ -7,13 +7,13 @@ const Loading = () => {
     useEffect(() => {
         setTimeout(() => {
             setShowLoading(true);
-        }, 20000)
+        }, 23000)
     })
 
     return (
         <div class="loading">
             {showLoading && 
-                <img alt="Loading..." className="loading-img" src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/35771931234507.564a1d2403b3a.gif" />
+                <Fade in={true} timeout={2000}><img alt="Loading..." className="loading-img" src="/25.gif" /></Fade>
             }
         </div>
     )
