@@ -1,6 +1,5 @@
 import Search from "../components/Search";
 import Results from "./Results";
-import Fade from "@mui/material/Fade";
 import { useState, useEffect } from "react";
 
 const Home = () => {
@@ -22,8 +21,6 @@ const Home = () => {
         if(buddyDone){
             console.log("dwagzesgsdiugshdugsbdifashofishgoiahsi")
             setCopyResults(results);
-            console.log(results)
-            console.log(copyResults)
         }
     }, [buddyDone, results]);
 
