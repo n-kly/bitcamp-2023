@@ -60,7 +60,7 @@ async def gpt(location, avg_sun, avg_precipitation, avg_temperature, avg_humidit
         {schema}
 
         The "crops" field should be an array of 5 objects representing the top crops to plant. 
-        Each object should have a "name" with the name of the crop, and a "description" with a unique description of why to plant the crop. 
+        Each object should have a "name" with the name of the crop, and a "description" with a unique description specific to that crop of why to plant it given the conditions. 
 
         The "buddy" field should have some relevant fun facts about the crops.
         """,
