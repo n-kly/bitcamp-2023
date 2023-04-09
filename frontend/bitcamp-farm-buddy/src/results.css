@@ -24,11 +24,6 @@
   .bottom {
     flex: 3;
   }
-  
-  /*.results {
-    border: 1px;
-    border-style: solid;
-  }*/
 
   .speech-container {
     display: flex;
@@ -47,6 +42,8 @@
 
   .mascot-container {
     height: 100%;
+    display: flex;
+    justify-content: center;
   } 
 
   .crop-container {

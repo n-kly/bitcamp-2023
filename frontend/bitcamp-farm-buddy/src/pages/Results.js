@@ -2,6 +2,7 @@ import Crops from "../components/Crops";
 import SpeechBubble from "../components/SpeechBubble";
 import Buddy from "../components/Buddy";
 import Slide from "@mui/material/Slide";
+import Fade from "@mui/material/Fade";
 import { useRef } from "react";
 
 const Results = ({ results }) => {
@@ -17,12 +18,9 @@ const Results = ({ results }) => {
                     <SpeechBubble results={results}/>
                 </div>
                 <div className="bottom results" ref={containerRef}>
-                    <Slide direction="up" in={true} container={containerRef.current} {...{timeout: 2000}}>
+                    <Slide direction="up" in={true} container={containerRef.current} {...{timeout: 2500}}>
                         <div><Buddy /></div>
-                    </Slide> 
-                    {/*<div className="hidden">
-                        <Buddy />
-    </div>*/}
+                    </Slide>
                 </div>
             </div>
         </div>

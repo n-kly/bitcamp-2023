@@ -1,11 +1,12 @@
 import Search from "../components/Search";
 import Results from "./Results";
+import Fade from "@mui/material/Fade";
 import { useState, useEffect } from "react";
 
 const Home = () => {
     const [results, setResults] = useState("");
     const [submit, setSubmit] = useState(true);
-    const [renderResults, setRenderResults] = useState(true);
+    const [renderResults, setRenderResults] = useState(false);
 
     useEffect(() => {
         if (!submit) {
@@ -18,7 +19,7 @@ const Home = () => {
     return (
         <div>
             {!renderResults ? <Search setResults = {setResults} submit={submit} setSubmit={setSubmit} />
-            : <Results results={results}/>}
+            : <Fade in={true} {...{timeout: 2000}}><div><Results results={results}/></div></Fade>}
         </div>
     )
 }

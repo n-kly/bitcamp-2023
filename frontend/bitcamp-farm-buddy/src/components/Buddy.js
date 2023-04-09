@@ -5,7 +5,7 @@ const Mascot = () => {
     
     return (
         <div className="mascot-container">
-            <img className="mascot" alt="BUDDY!" style={{height: "300px", width: "auto"}} src="/buddyStanding.png" />
+            <img className="mascot" alt="BUDDY!" style={{height: "375px", width: "auto"}} src="/buddyStandingWithHat.png" />
         </div>
     )
 }

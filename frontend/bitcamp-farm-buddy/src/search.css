@@ -100,34 +100,6 @@ code {
   
 }
 
-.buddy {
-
-}
-
-.buddy-enter {
-  transform: translateY(100%);
-}
-
-.buddy-enter-active {
-  transform: translateY(0);
-  transition: transform 500ms ease-in-out;
-}
-
-.buddy-exit {
-  transform: translateY(0);
-}
-
-.buddy-exit-active {
-  transform: translateY(100%);
-  transition: transform 500ms ease-in-out;
-}
-
-
-
-
-
-
-
 form {
   display: flex;
   align-items: center;
