@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 
 const Home = () => {
     const [results, setResults] = useState("");
+    const [copyResults, setCopyResults] = useState("");
+    const [buddyDone, setBuddyDone] = useState(false);
     const [submit, setSubmit] = useState(true);
     const [renderResults, setRenderResults] = useState(false);
 
@@ -16,10 +18,20 @@ const Home = () => {
         }
     }, [submit]);
 
+    useEffect(() => {
+        if(buddyDone){
+            console.log("dwagzesgsdiugshdugsbdifashofishgoiahsi")
+            setCopyResults(results);
+            console.log(results)
+        }
+    }, [buddyDone, results]);
+
+
+    
     return (
         <div>
             {!renderResults ? <Search setResults = {setResults} submit={submit} setSubmit={setSubmit} />
-            : <div><Results results={results}/></div>}
+            : <div><Results setBuddyDone={setBuddyDone} results={copyResults}/></div>}
         </div>
     )
 }

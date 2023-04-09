@@ -4,7 +4,7 @@ import Buddy from "../components/Buddy";
 import Slide from "@mui/material/Slide";
 import Fade from "@mui/material/Fade";
 
-const Results = ({ results }) => {
+const Results = ({ results, setBuddyDone}) => {
 
     return (
         <div className="results-container">
@@ -16,7 +16,7 @@ const Results = ({ results }) => {
             <div className="right">
                 <Fade in={true} {...{timeout: 2000}}>
                 <div className="top results">
-                    <SpeechBubble results={results}/>
+                    <SpeechBubble results={results} setBuddyDone={setBuddyDone}/>
                 </div>
                 </Fade>
                 <div className="bottom results">
