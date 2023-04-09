@@ -1,7 +1,6 @@
 
 
 const SpeechBubble = ({results}) => {
-    const res = {buddy: "Hey there! My name is Vignesh Rangarajan and I absolutely LOVE farming!"}
     const buddy = results.buddy;
     
     

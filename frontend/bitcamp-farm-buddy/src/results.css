@@ -4,6 +4,7 @@
     flex-direction: row;
     height: 100vh;
     width: 100vw;
+    font-family: "Chivo Mono";
   }
   
   .left {
@@ -56,11 +57,14 @@
   }
 
   .crops {
-    background-color: #ffdcbe;
     padding: 10px;
     border-radius: 10px;
     width: 95%;
     height: 95%;
+  }
+
+  .title {
+    color: rgb(255, 240, 240);
   }
   
   

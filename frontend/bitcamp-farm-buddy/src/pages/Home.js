@@ -1,9 +1,10 @@
-import Search from "../components/Search"
+import Search from "../components/Search";
+
 
 const Home = ({ setResults }) => {
     return (
         <div>
-            <Search setResults={setResults}/>
+            <Search setResults = {setResults} />
         </div>
     )
 }
