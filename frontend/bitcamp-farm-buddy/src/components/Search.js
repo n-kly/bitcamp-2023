@@ -59,9 +59,7 @@ const Search = ({ setResults }) => {
                     
                 </Form>
 
-                
-
-                <h5>~or~</h5>
+                <h3 className="or">~or~</h3>
 
                 <Button className="secondary-button" onClick={handleSubmitFindLocation}>use current location</Button>
             </div>

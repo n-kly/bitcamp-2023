@@ -25,7 +25,7 @@ async def gpt(location, avg_sun, avg_precipitation, avg_temperature, avg_humidit
         engine="text-davinci-003",
          prompt =f"""
 What are the best crops to grow in{location}given the following factors: the average precipitation is {avg_precipitation}mm, the average temperature is {avg_temperature}F, the average humidity is {avg_humidity}%, and the average sun coverage is {avg_sun}%.
-Provide the response as a JSON object with two fields: "crops" and "buddy". The "crops" field should be an array of 5 objects representing the top crops to plant. Each object should have a field called "name" with the name of the crop, and a field called "description" with a unique description of why to plant the crop. The "buddy" field should have some fun facts about the crop and the location.
+Provide the response as a JSON object with two fields: "crops" and "buddy". The "crops" field should be an array of 5 objects representing the top crops to plant. Each object should have a field called "name" with the name of the crop, and a field called "description" with a unique description of why to plant the crop. The "buddy" field should have some relevant fun facts about the crops and gardening.
 """,
         max_tokens=2000
     )
@@ -61,7 +61,7 @@ async def main():
     for data in filter(lambda x: x is not None, await asyncio.gather(*tasks)):
         count += 1
         if not location_name:
-            location_name = data['location']['name'] + ", " + data['location']['region'] + ', ' + data['location']['country']
+            location_name = data['location']['name'] + ", " + data['location']['region']
         for j in range (8):
             total_sun += 100 - data["forecast"]['forecastday'][0]['hour'][j]["cloud"]
         total_precipitation += data['forecast']['forecastday'][0]['day']['totalprecip_mm']
