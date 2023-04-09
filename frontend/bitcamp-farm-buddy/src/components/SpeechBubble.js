@@ -26,12 +26,12 @@ const SpeechBubble = ({results, setBuddyDone}) => {
                 {results ?
                     <TypeEffect
                     text={text.toLowerCase()}
-                    speed={55}
+                    speed={60}
                     onComplete={() => {}}
                     />
                     :
                     <TypeAnimation 
-                    speed={55} 
+                    speed={60} 
                     sequence={introduce}
                     repeat={0}
                     deletionSpeed={75}
