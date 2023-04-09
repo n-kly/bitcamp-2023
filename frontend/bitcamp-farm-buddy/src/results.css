@@ -53,9 +53,15 @@
     height: 95%;
   }
 
+  .single-crop {
+    margin-bottom: 30px;
+  }
+
   .title {
     color: #47a24d;
-    height: 1em;
+    height: 50px;
+    font-size: 50px;
+    letter-spacing: 1px;
   }
 
   .loading {

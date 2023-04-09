@@ -4,7 +4,7 @@ import Buddy from "../components/Buddy";
 import Slide from "@mui/material/Slide";
 import Fade from "@mui/material/Fade";
 
-const Results = ({ results, setBuddyDone}) => {
+const Results = ({ results, setBuddyDone }) => {
 
     return (
         <div className="results-container">

@@ -55,12 +55,13 @@ async def gpt(location, avg_sun, avg_precipitation, avg_temperature, avg_humidit
         average humidity - {avg_humidity}%,
         average sun coverage - {avg_sun}%.
 
-        Provide the response as a JSON object that specifically follows the schema detailed below: 
+        Provide the response exactly as a JSON object that specifically follows the schema detailed below: 
 
         {schema}
 
-        The "crops" field should be an array of 5 objects representing the top 5 best crops to plant. 
-        Each object should have a "name" with the name of the crop, and a "description" with a unique description specific to that crop of why to plant it given the conditions. 
+        Do not deviate your response from the schema. 
+        The "crops" field should be an array of 4 objects representing the top 4 best crops to plant. 
+        Each object should have a "name" with the name of the crop, and a "description" with a unique description specific to that crop of why to plant it. 
 
         The "buddy" field should have some relevant fun facts about the crops.
         """,
