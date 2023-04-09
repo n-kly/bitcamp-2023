@@ -20,7 +20,7 @@ async def before_serving():
 async def after_serving():
     await app.client.close()
 
-async def gpt(location, avg_sun, avg_precipitation, avg_temperature, avg_humidity):
+async def gpt(location, avg_sun, avg_precipitation, avg_temperature, avg_humidity, season):
     schema = r"""
     {
     "crops": {
@@ -49,7 +49,7 @@ async def gpt(location, avg_sun, avg_precipitation, avg_temperature, avg_humidit
         engine="text-davinci-003",
 
         prompt =f"""
-        What are the best crops to grow in{location}given the following factors: 
+        What are the best crops to grow in {location} in the {season} given the following factors: 
         average precipitation - {avg_precipitation}mm,
         average temperature - {avg_temperature}F,
         average humidity - {avg_humidity}%,
@@ -112,6 +112,17 @@ async def main():
     avg_precipitation = round(total_precipitation / count, 2)
     avg_temperature = round(total_temperature / count, 2)
     avg_humidity = round(total_humidity / count, 2)
+
+    day = datetime.today().timetuple().tm_yday
+    if day in range(80, 172):
+        season = "spring"
+    elif day in range(172, 264):
+        season = "summer"
+    elif day in range(264, 355):
+        season = "fall"
+    else:
+        season = "winter"
+
     
     print(location_name)
     print(avg_sun)
@@ -119,7 +130,7 @@ async def main():
     print(avg_temperature)
     print(avg_humidity)
 
-    result = await gpt(location_name, avg_sun, avg_precipitation, avg_temperature, avg_humidity)
+    result = await gpt(location_name, avg_sun, avg_precipitation, avg_temperature, avg_humidity, season)
 
     print(result)
 
