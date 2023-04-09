@@ -1,4 +1,5 @@
-import './styles.css';import { TypeAnimation } from "react-type-animation";
+import './styles.css';
+import { TypeAnimation } from "react-type-animation";
 
 const SpeechBubble = ({results}) => {
     let introduce = "hey! my name is buddy and i love to farm!!!!!!!! "
