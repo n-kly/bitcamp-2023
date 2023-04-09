@@ -61,7 +61,7 @@ async def main():
     for data in filter(lambda x: x is not None, await asyncio.gather(*tasks)):
         count += 1
         if not location_name:
-            location_name = data['location']['name'] + ", " + data['location']['region'] + ', ' + data['location']['country']
+            location_name = data['location']['name'] + ", " + data['location']['region']
         for j in range (8):
             total_sun += 100 - data["forecast"]['forecastday'][0]['hour'][j]["cloud"]
         total_precipitation += data['forecast']['forecastday'][0]['day']['totalprecip_mm']
