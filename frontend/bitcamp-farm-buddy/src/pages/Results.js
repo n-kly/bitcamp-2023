@@ -2,7 +2,6 @@ import Crops from "../components/Crops";
 import SpeechBubble from "../components/SpeechBubble";
 import Buddy from "../components/Buddy";
 import Slide from "@mui/material/Slide";
-import Fade from "@mui/material/Fade";
 import { useRef } from "react";
 
 const Results = ({ results }) => {
