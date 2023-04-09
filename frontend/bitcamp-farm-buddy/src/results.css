@@ -51,6 +51,18 @@
   .title {
     color: rgb(255, 240, 240);
   }
-  
-  
-  
+
+  .loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .loading-img {
+    height: 75px;
+    width: 75px;
+  }
+
+

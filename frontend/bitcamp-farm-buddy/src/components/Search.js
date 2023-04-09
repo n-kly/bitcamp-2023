@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Logo from "./Logo";
 import axios from "axios";
 import { Form, InputGroup, Button } from 'react-bootstrap';
@@ -19,7 +19,9 @@ const Search = ({ submit, setSubmit, setResults }) => {
         axios.post("http://localhost:4000/", locData).then(res => {
             setResults(res.data);
         }).catch(err => {
+            const res = {error: "hmmm... something seems to have gone wrong on the backend. reload the page to try again!"}
             console.log(err);
+            setResults(res);
         })
         /*console.log(zipCode);
         setResults(zipCode)*/
@@ -48,11 +50,11 @@ const Search = ({ submit, setSubmit, setResults }) => {
         setZipCode(e.target.value)
     }
 
-    const handleZoomEntered = () => {
+    useEffect(() => {
         setTimeout(() => {
             setStartGrow(true);
-        }, 0);
-    }
+        }, 1000);
+    }, [])
 
     return (
         <CSSTransition in={submit} classNames="slide-down" timeout={6000} unmountOnExit>
@@ -63,7 +65,7 @@ const Search = ({ submit, setSubmit, setResults }) => {
                 <div></div>
                 <Grow in={startGrow} timeout={1000}><div><Logo /></div></Grow>
             </div>
-            <Zoom in={true} timeout={1500} onEntered={handleZoomEntered}>
+            <Zoom in={true} timeout={1500}>
             <div className= "row2">
                 <h1>farm buddy</h1>
 
