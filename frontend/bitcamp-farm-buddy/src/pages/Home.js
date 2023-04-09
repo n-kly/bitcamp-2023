@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 const Home = () => {
     const [results, setResults] = useState("");
     const [submit, setSubmit] = useState(true);
-    const [renderResults, setRenderResults] = useState(false);
+    const [renderResults, setRenderResults] = useState(true);
 
     useEffect(() => {
         if (!submit) {
