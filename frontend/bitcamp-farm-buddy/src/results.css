@@ -23,6 +23,9 @@
   
   .bottom {
     flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .speech-container {
@@ -40,12 +43,12 @@
     height: 92%;
   }
 
-  .mascot-container {
+  .buddy-container {
     height: 100%;
     display: flex;
     justify-content: center;
   } 
-
+  
   .crop-container {
     display: flex;
     justify-content: center;

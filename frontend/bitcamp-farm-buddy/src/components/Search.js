@@ -3,11 +3,13 @@ import Logo from "./Logo";
 import axios from "axios";
 import { Form, InputGroup, Button } from 'react-bootstrap';
 import Grow from "@mui/material/Grow";
+import Zoom from "@mui/material/Zoom";
 import { CSSTransition } from 'react-transition-group';
 
 const Search = ({ submit, setSubmit, setResults }) => {
 
     const [zipCode, setZipCode] = useState([]);
+    const [startGrow, setStartGrow] = useState(false);
 
     const fetchData = async (locData) => {
 
@@ -46,6 +48,12 @@ const Search = ({ submit, setSubmit, setResults }) => {
         setZipCode(e.target.value)
     }
 
+    const handleZoomEntered = () => {
+        setTimeout(() => {
+            setStartGrow(true);
+        }, 0);
+    }
+
     return (
         <CSSTransition in={submit} classNames="slide-down" timeout={6000} unmountOnExit>
         <div className="search-container" >
@@ -53,8 +61,9 @@ const Search = ({ submit, setSubmit, setResults }) => {
 
             <div className="row1">
                 <div></div>
-                <Grow in={true} {...{timeout: 1500}}><div><Logo /></div></Grow>
+                <Grow in={startGrow} timeout={1000}><div><Logo /></div></Grow>
             </div>
+            <Zoom in={true} timeout={1500} onEntered={handleZoomEntered}>
             <div className= "row2">
                 <h1>farm buddy</h1>
 
@@ -70,7 +79,7 @@ const Search = ({ submit, setSubmit, setResults }) => {
 
                 <Button className="secondary-button" onClick={handleSubmitFindLocation}>use current location</Button>
             </div>
-            
+            </Zoom>
             <div className="row3">
 
             </div>

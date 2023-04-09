@@ -19,7 +19,7 @@ const Home = () => {
     return (
         <div>
             {!renderResults ? <Search setResults = {setResults} submit={submit} setSubmit={setSubmit} />
-            : <Fade in={true} {...{timeout: 2000}}><div><Results results={results}/></div></Fade>}
+            : <div><Results results={results}/></div>}
         </div>
     )
 }

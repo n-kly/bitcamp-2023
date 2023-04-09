@@ -4,8 +4,8 @@ const Mascot = () => {
 
     
     return (
-        <div className="mascot-container">
-            <img className="mascot" alt="BUDDY!" style={{height: "375px", width: "auto"}} src="/buddyStandingWithHat.png" />
+        <div className="buddy-container">
+            <img className="buddy" alt="BUDDY!" style={{height: "200px", width: "auto"}} src="/PleaseBuddy.png" />
         </div>
     )
 }
