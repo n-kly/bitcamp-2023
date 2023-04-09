@@ -21,16 +21,55 @@ async def after_serving():
     await app.client.close()
 
 async def gpt(location, avg_sun, avg_precipitation, avg_temperature, avg_humidity):
+    schema = r"""
+    {
+    "crops": \{
+        "type": "array",
+        "items": 
+            "type": "object",
+            "items": {
+                "name": {
+                "type": "string"
+                },
+                "description": {
+                "type": "string"
+                }
+            }, ...
+    },
+    "buddy": {
+        "type": "string",
+        "items": {
+            ...
+        }
+    }
+    }
+    """
+     
     r = openai.Completion.create(
         engine="text-davinci-003",
-         prompt =f"""
-What are the best crops to grow in{location}given the following factors: the average precipitation is {avg_precipitation}mm, the average temperature is {avg_temperature}F, the average humidity is {avg_humidity}%, and the average sun coverage is {avg_sun}%.
-Provide the response as a JSON object with two fields: "crops" and "buddy". The "crops" field should be an array of 5 objects representing the top crops to plant. Each object should have a field called "name" with the name of the crop, and a field called "description" with a unique description of why to plant the crop. The "buddy" field should have some relevant fun facts about the crops and gardening.
+
+        prompt =f"""
+What are the best crops to grow in{location}given the following factors: 
+average precipitation - {avg_precipitation}mm,
+average temperature - {avg_temperature}F,
+average humidity - {avg_humidity}%,
+average sun coverage - {avg_sun}%.
+
+Provide the response as a JSON object that specifically follows the schema detailed below: 
+
+{schema}
+
+The "crops" field should be an array of 5 objects representing the top crops to plant. 
+Each object should have a "name" with the name of the crop, and a "description" with a unique description of why to plant the crop. 
+
+The "buddy" field should have some relevant fun facts about the crops.
 """,
         max_tokens=2000
     )
     print(r)
     return r
+
+
 
 async def get_weather_data(client, location, lookup_date):
     url = f"http://api.weatherapi.com/v1/future.json?key={weather_api_key}&q={location}&dt={lookup_date}"
