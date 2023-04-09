@@ -25,21 +25,6 @@
     flex: 3;
   }
 
-  .speech-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
-
-  .speech-bubble {
-    background-color: #ffdcbe;
-    padding: 10px;
-    border-radius: 10px;
-    width: 92%;
-    height: 92%;
-  }
-
   .mascot-container {
     height: 100%;
     display: flex;

@@ -1,0 +1,31 @@
+  .bubble {
+    position: relative;
+    padding: 10px;
+    border-radius: 10px;
+    width: 90%;
+    height: 90%;
+    background: #F5FAF5;
+    border-radius: 40px;
+    padding: 24px;
+    text-align: center;
+  }
+  
+  .bubble-bottom-left:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 24px solid #F5FAF5;
+    border-right: 12px solid transparent;
+    border-top: 12px solid #F5FAF5;
+    border-bottom: 20px solid transparent;
+    left: 32px;
+    bottom: -24px;
+  }
+
+  .speech-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
