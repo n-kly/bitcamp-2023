@@ -29,6 +29,12 @@ code {
   font-family: "Chivo Mono"
 }
 
+.logo {
+  width: 250px;
+  height: auto;
+  padding: 10px;
+}
+
 .search-container .row1 {
   flex: 5;
   display: flex;
@@ -38,11 +44,33 @@ code {
 }
 
 
-.search-container .row2 {
+.row2 {
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: auto;
+}
+.slide-down-enter {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.slide-down-enter-active {
+  opacity: 1;
+  transform: translateY(0%);
+  transition: opacity 3000ms, transform 3000ms;
+}
+
+.slide-down-exit {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+.slide-down-exit-active {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 3000ms, transform 3000ms;
 }
 
 .search-container .row2 h1 {
@@ -68,7 +96,35 @@ code {
 
 .search-container .row3 {
   flex: 5;
+  
 }
+
+.buddy {
+
+}
+
+.buddy-enter {
+  transform: translateY(100%);
+}
+
+.buddy-enter-active {
+  transform: translateY(0);
+  transition: transform 500ms ease-in-out;
+}
+
+.buddy-exit {
+  transform: translateY(0);
+}
+
+.buddy-exit-active {
+  transform: translateY(100%);
+  transition: transform 500ms ease-in-out;
+}
+
+
+
+
+
 
 
 form {
@@ -82,17 +138,10 @@ input[type="text"] {
   background-color: #CCEDCE;
   width: 350px !important;
   border: 1px;
+  letter-spacing: 2px;
 }
 
-/*button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 3px;
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
-}*/
+
 
 
 

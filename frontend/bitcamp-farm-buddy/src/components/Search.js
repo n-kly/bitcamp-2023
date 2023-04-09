@@ -2,8 +2,10 @@ import { useState } from "react";
 import Logo from "./Logo";
 import axios from "axios";
 import { Form, InputGroup, Button } from 'react-bootstrap';
+import Grow from "@mui/material/Grow";
+import { CSSTransition } from 'react-transition-group';
 
-const Search = ({ setResults }) => {
+const Search = ({ submit, setSubmit, setResults }) => {
 
     const [zipCode, setZipCode] = useState([]);
 
@@ -23,10 +25,12 @@ const Search = ({ setResults }) => {
 
     const handleSubmitWithLocation = (e) => {
         e.preventDefault();
+        setSubmit(false);
         fetchData({ location: zipCode, isLongLat: false });
     }
 
     const handleSubmitFindLocation = () => {
+        setSubmit(false);
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 pos => {
@@ -43,18 +47,21 @@ const Search = ({ setResults }) => {
     }
 
     return (
+        <CSSTransition in={submit} classNames="slide-down" timeout={6000} unmountOnExit>
         <div className="search-container" >
+            
+
             <div className="row1">
                 <div></div>
-                <Logo />
+                <Grow in={true} {...{timeout: 1500}}><div><Logo /></div></Grow>
             </div>
-            <div className="row2">
+            <div className= "row2">
                 <h1>farm buddy</h1>
 
                 <Form>
                     <InputGroup>
                         <Form.Control type="text" placeholder="enter your zip code..." value={zipCode} onChange={handleZipCodeChange} />
-                        <Button className="search-button" variant="success" onClick={handleSubmitWithLocation}><i class="fa fa-search" /></Button>
+                        <Button className="search-button" variant="success" onClick={handleSubmitWithLocation}><i className="fa fa-search" /></Button>
                     </InputGroup>
                     
                 </Form>
@@ -63,11 +70,13 @@ const Search = ({ setResults }) => {
 
                 <Button className="secondary-button" onClick={handleSubmitFindLocation}>use current location</Button>
             </div>
+            
             <div className="row3">
 
             </div>
 
         </div>
+        </CSSTransition>
 
     )
 }
