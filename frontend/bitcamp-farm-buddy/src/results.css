@@ -17,12 +17,17 @@
     flex-direction: column;
   }
   
+  .top-padding {
+    flex: 4;
+  }
+
   .top {
-    flex: 7;
+    flex: 6;
+    font-size: 20px;
   }
   
   .bottom {
-    flex: 3;
+    flex: 2;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

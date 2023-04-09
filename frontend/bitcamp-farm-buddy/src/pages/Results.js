@@ -14,6 +14,7 @@ const Results = ({ results, setBuddyDone}) => {
             </div>
             </Fade>
             <div className="right">
+                <div className="top-padding"></div>
                 <Fade in={true} {...{timeout: 2000}}>
                 <div className="top results">
                     <SpeechBubble results={results} setBuddyDone={setBuddyDone}/>
