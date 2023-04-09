@@ -12,6 +12,7 @@ body {
   align-items: center;
   height: 100vh;
   background-color: #b4ddb4 !important;
+  overflow: hidden;
 }
 
 
