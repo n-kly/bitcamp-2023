@@ -8,7 +8,7 @@ const Home = () => {
     const [copyResults, setCopyResults] = useState("");
     const [buddyDone, setBuddyDone] = useState(false);
     const [submit, setSubmit] = useState(true);
-    const [renderResults, setRenderResults] = useState(true);
+    const [renderResults, setRenderResults] = useState(false);
 
     useEffect(() => {
         if (!submit) {
@@ -23,6 +23,7 @@ const Home = () => {
             console.log("dwagzesgsdiugshdugsbdifashofishgoiahsi")
             setCopyResults(results);
             console.log(results)
+            console.log(copyResults)
         }
     }, [buddyDone, results]);
 
