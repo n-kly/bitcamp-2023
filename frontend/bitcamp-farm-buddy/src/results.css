@@ -54,7 +54,8 @@
   }
 
   .title {
-    color: rgb(255, 240, 240);
+    color: #47a24d;
+    height: 1em;
   }
 
   .loading {
